@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
         char c;
         va_list args;
         int l = 0;
-        char *s;
+        char *str;
 
         va_start(args, format);
 
@@ -20,7 +20,8 @@ int _printf(const char *format, ...)
         {
                 if (c == '%')
                 {
-                        c = *format++;
+			format++;
+                        c = *format;
                         switch (c)
                         {
                                 case 'c':
@@ -28,9 +29,9 @@ int _printf(const char *format, ...)
                                         i++;
                                         break;
                                 case 's':
-                                        s = va_arg(args, char*);
-                                        printf("%s", s);
-                                        for (l = 0; s[l] != '\0'; l++)
+                                        str = va_arg(args, char*);
+                                        printf("%s", str);
+                                        for (l = 0; str[l] != '\0'; l++)
                                         {
 
                                         }
